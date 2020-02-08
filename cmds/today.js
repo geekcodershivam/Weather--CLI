@@ -18,8 +18,8 @@ if(location === undefined){
       const currentstate=fulldata.weather_state_name;
       const temp=fulldata.the_temp;
       const printtemp=Math.ceil(temp);
-      const spinner = ora();
-  
+      
+      spinner.stop();
       console.log(`Current conditions in  ${loc}
               ${printtemp} ${currentstate}`)
     })
@@ -33,7 +33,7 @@ if(location === undefined){
 }
 
 else{
-    
+    spinner.start();
     GetRawdata(location)
     .then((data)=>{
       const fulldata=data[0];
